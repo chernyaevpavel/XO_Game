@@ -38,6 +38,17 @@ public final class Gameboard {
         return positions[column][row] == player
     }
     
+    public func getFreePositionIfNeeded() -> GameboardPosition? {
+        for i in 0..<positions.count {
+            for j in 0..<positions[i].count {
+                if positions[i][j] == nil {
+                    return GameboardPosition(column: i, row: j)
+                }
+            }
+        }
+        return nil
+    }
+    
     // MARK: - Private
     
     private func initialPositions() -> [[Player?]] {
